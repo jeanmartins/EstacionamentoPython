@@ -8,6 +8,9 @@ class Estacionamento:
         self.vagasCarrosGrande = [None] * 25
         self.vagasMoto = [None] * 25
         self.vagasCarrosComum = [None] * 50
+        self.vagasCarrosGrandeIndisponiveis = 0
+        self.vagasMotoIndisponiveis = 0
+        self.vagasCarrosComumIndisponiveis = 0
 
     def adicionarVeiculoVaga(self, veiculo):
         if veiculo.tipoVeiculo == "GRANDE":
@@ -16,6 +19,8 @@ class Estacionamento:
                     veiculo.numeroVaga = "G" + str(i + 1)
                     self.vagasCarrosGrande[i] = veiculo
                     return print("Carro grande adicionado com sucesso! Seu número de vaga é " + str(veiculo.numeroVaga))
+            self.vagasCarrosGrandeIndisponiveis += 1
+            return print("Estacionamento Lotado")
 
         if veiculo.tipoVeiculo == "COMUM":
             for i in range(len(self.vagasCarrosComum)):
@@ -23,12 +28,17 @@ class Estacionamento:
                     veiculo.numeroVaga = "C" + str(i + 1)
                     self.vagasCarrosComum[i] = veiculo
                     return print("Carro comum adicionado com sucesso! Seu número de vaga é " + str(veiculo.numeroVaga))
+            self.vagasCarrosComumIndisponiveis += 1
+            return print("Estacionamento Lotado")
+
         if veiculo.tipoVeiculo == "MOTO":
             for i in range(len(self.vagasMoto)):
                 if self.vagasMoto[i] is None:
                     veiculo.numeroVaga = "M" + str(i + 1)
                     self.vagasMoto[i] = veiculo
                     return print("Moto adicionada a vaga com sucesso! Seu número de vaga é " + str(veiculo.numeroVaga))
+            self.vagasMotoIndisponiveis += 1
+            return print("Estacionamento Lotado")
 
     def vagasLivres(self):
         countVagasCarrosGrande = 0
@@ -72,7 +82,14 @@ class Estacionamento:
                     if self.vagasCarrosComum[i].numeroVaga == numeroVaga:
                          self.vagasCarrosComum[i] = None
                          return print("Vaga removida com sucesso! ")
+
         return print("Número da vaga não é válido! Contate o responsável pelo estabelecimento!")
+
+    def imprimirRelatorio(self):
+        return print("CLIENTES NAO ATENDIDOS: CARROS COMUNS = " + str(self.vagasCarrosComumIndisponiveis) + " CARROS GRANDE = " + str(
+            self.vagasCarrosGrandeIndisponiveis) + \
+                     " MOTOS = " + str(self.vagasMotoIndisponiveis))
+
 
 if __name__ == '__main__':
     e = Estacionamento()
@@ -85,3 +102,4 @@ if __name__ == '__main__':
     e.vagasLivres()
     e.adicionarVeiculoVaga(Veiculo("MOTO"))
     e.vagasLivres()
+    e.imprimirRelatorio()
