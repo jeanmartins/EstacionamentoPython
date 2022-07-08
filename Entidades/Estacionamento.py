@@ -73,11 +73,15 @@ class Estacionamento:
                          self.vagasCarrosComum[i] = None
                          return print("Vaga removida com sucesso! ")
         return print("Número da vaga não é válido! Contate o responsável pelo estabelecimento!")
-    
+
 if __name__ == '__main__':
     e = Estacionamento()
     e.vagasLivres()
     e.adicionarVeiculoVaga(Veiculo("MOTO"))
+    e.adicionarVeiculoVaga(Veiculo("MOTO"))
+    e.adicionarVeiculoVaga(Veiculo("MOTO"))
     e.vagasLivres()
-    e.removerVeiculoVaga("M3")
+    e.removerVeiculoVaga("M2")
+    e.vagasLivres()
+    e.adicionarVeiculoVaga(Veiculo("MOTO"))
     e.vagasLivres()
