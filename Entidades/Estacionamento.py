@@ -91,15 +91,16 @@ class Estacionamento:
                      " MOTOS = " + str(self.vagasMotoIndisponiveis))
 
 
-if __name__ == '__main__':
-    e = Estacionamento()
-    e.vagasLivres()
-    e.adicionarVeiculoVaga(Veiculo("MOTO"))
-    e.adicionarVeiculoVaga(Veiculo("MOTO"))
-    e.adicionarVeiculoVaga(Veiculo("MOTO"))
-    e.vagasLivres()
-    e.removerVeiculoVaga("M2")
-    e.vagasLivres()
-    e.adicionarVeiculoVaga(Veiculo("MOTO"))
-    e.vagasLivres()
-    e.imprimirRelatorio()
+# if __name__ == '__main__':
+    # e = Estacionamento()
+    # e.vagasLivres()
+    # e.adicionarVeiculoVaga(Veiculo("MOTO"))
+    # e.adicionarVeiculoVaga(Veiculo("MOTO"))
+    # e.adicionarVeiculoVaga(Veiculo("MOTO"))
+    # e.vagasLivres()
+    # e.removerVeiculoVaga("M2")
+    # e.vagasLivres()
+    # for i in range(0,100):
+    #     e.adicionarVeiculoVaga(Veiculo("MOTO"))
+    # e.vagasLivres()
+    # e.imprimirRelatorio()
